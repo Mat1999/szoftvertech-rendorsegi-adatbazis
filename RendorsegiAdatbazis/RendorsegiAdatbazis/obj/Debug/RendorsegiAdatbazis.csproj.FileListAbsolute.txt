@@ -1,0 +1,6 @@
+D:\program projekt\szoftvertech-rendorsegi-adatbazis\RendorsegiAdatbazis\RendorsegiAdatbazis\obj\Debug\RendorsegiAdatbazis.csprojResolveAssemblyReference.cache
+D:\program projekt\szoftvertech-rendorsegi-adatbazis\RendorsegiAdatbazis\RendorsegiAdatbazis\bin\Debug\RendorsegiAdatbazis.exe.config
+D:\program projekt\szoftvertech-rendorsegi-adatbazis\RendorsegiAdatbazis\RendorsegiAdatbazis\bin\Debug\RendorsegiAdatbazis.exe
+D:\program projekt\szoftvertech-rendorsegi-adatbazis\RendorsegiAdatbazis\RendorsegiAdatbazis\bin\Debug\RendorsegiAdatbazis.pdb
+D:\program projekt\szoftvertech-rendorsegi-adatbazis\RendorsegiAdatbazis\RendorsegiAdatbazis\obj\Debug\RendorsegiAdatbazis.exe
+D:\program projekt\szoftvertech-rendorsegi-adatbazis\RendorsegiAdatbazis\RendorsegiAdatbazis\obj\Debug\RendorsegiAdatbazis.pdb

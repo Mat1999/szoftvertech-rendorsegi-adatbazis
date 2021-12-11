@@ -86,7 +86,7 @@ namespace RendorsegiAdatbazis
 			rendszam = rendsz;
 		}
 		public void SetMertSebesseg(double sebesseg){
-			mertSebesseg = sebesseg
+			mertSebesseg = sebesseg;
 		}
 		public void SetBirsagOsszege(int osszeg){
 			birsagOsszege = osszeg;

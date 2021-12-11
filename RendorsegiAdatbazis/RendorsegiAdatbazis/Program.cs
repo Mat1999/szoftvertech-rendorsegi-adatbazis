@@ -12,14 +12,34 @@ namespace RendorsegiAdatbazis
 {
 	class Program
 	{
+		bool bejelentkezett;
+		bool kilepes;
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
 			
-			// TODO: Implement Functionality Here
 			
-			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
+		}
+		
+		public void FoprogramLoop(){
+			bejelentkezett = false;
+			kilepes = false;
+			
+			while (!kilepes){
+				Console.Write("Adja meg a személyigazolványszámát: ");
+				string felhasznaloNev = Console.ReadLine();
+				Console.Write("Adja meg a jelszavát: ");
+				string jelszo = Console.ReadLine();
+				while (bejelentkezett){
+					
+				}
+			}
+		}
+		
+		public bool KeresFelhasznalo(){
+			return false;
+		}
+		public void FelhasznalokBetoltese(){
+			
 		}
 	}
 }
