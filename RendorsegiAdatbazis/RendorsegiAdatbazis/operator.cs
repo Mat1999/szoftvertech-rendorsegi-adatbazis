@@ -2,14 +2,15 @@
 
 namespace RendorsegiAdatbazis
 {
-	public class Operator
+	public class Operator : felhasznalo
 	{
 		private int operatorAzon;
-		public Operator(string _nev, string _szemIgSz, DateTime _szuldate, string _lakhely, string _jelszo,int _opAzon)
+		
+		public Operator(string _nev, string _szemIgSz, DateTime _szuldate, string _lakhely, string _jelszo,int _opAzon) : base(_nev, _szemIgSz, _szuldate, _lakhely, _jelszo)
 		{
 			operatorAzon = _opAzon;
 		}
-		public void birsagFelvetele(int id, string helyszin, double sebesseg, string rendszam, DateTime rogzitesDatum, double fizetendoOsszeg, string fizetesStatusz, int RogzitoOperatorAzon) {
+		public void birsagFelvetele(string ID, string rogAzon, DateTime rogIdo, string igaSzam, string rendsz, double sebesseg, int birsag, int RogzitoOperatorAzon) {
 			//
 		}
 		public void osszedBirsagMegtekintese()

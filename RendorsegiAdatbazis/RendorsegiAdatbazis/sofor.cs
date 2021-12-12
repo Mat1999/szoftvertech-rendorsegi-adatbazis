@@ -52,7 +52,20 @@ namespace RendorsegiAdatbazis
 			Console.WriteLine("Egyenleg: {0} Ft", egyenleg);
 		}
 	
-		//getter
+		//********************** GETTERS **************************
+		#region Getters
+		public int GetEgyenleg(){
+			return egyenleg;
+		}
+		
+		#endregion
+		//********************** GETTERS **************************
+		#region Setters
+		public void SetEgyenleg(int _egyenleg){
+			egyenleg = _egyenleg;
+		}
+		
+		#endregion
 		
 	}
 }

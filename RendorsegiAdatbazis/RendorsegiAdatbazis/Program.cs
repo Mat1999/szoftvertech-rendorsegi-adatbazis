@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 
 namespace RendorsegiAdatbazis
 {
@@ -14,6 +15,9 @@ namespace RendorsegiAdatbazis
 	{
 		bool bejelentkezett;
 		bool kilepes;
+		List<felhasznalo> felhasznalok;
+		
+		
 		public static void Main(string[] args)
 		{
 			
@@ -23,6 +27,7 @@ namespace RendorsegiAdatbazis
 		public void FoprogramLoop(){
 			bejelentkezett = false;
 			kilepes = false;
+			felhasznalok = new List<felhasznalo>();
 			
 			while (!kilepes){
 				Console.Write("Adja meg a személyigazolványszámát: ");
