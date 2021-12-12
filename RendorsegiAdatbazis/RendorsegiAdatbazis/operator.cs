@@ -88,7 +88,9 @@ namespace RendorsegiAdatbazis
 			}
 		}
 		public void felhasznalokListazasa() {
-			//gondolom a "program" lesz a rendszer ami tárolja a felhasználókat listában és onnan kéne kiirni
+			foreach (felhasznalo user in Program.felhasznalok) {
+				user.PublikusAdatokKilistazasa();
+			}
 		}
 		public void felhasznaloBirsagainakListazasa(string szemIgSz) {
 			int index = Program.KeresFelhasznalo(szemIgSz);

@@ -29,17 +29,28 @@ namespace RendorsegiAdatbazis
 			kilepes = false;
 			felhasznalok = new List<felhasznalo>();
 			bejelentkezettUser = null;
-			
+			string temp;
 			while (!kilepes){
-				Console.Write("Adja meg a személyigazolványszámát: ");
-				string felhasznaloNev = Console.ReadLine();
-				Console.Write("Adja meg a jelszavát: ");
-				string jelszo = Console.ReadLine();
-				felhasznaloNev = felhasznaloNev.Trim();
-				jelszo = jelszo.Trim();
-				
-				while (bejelentkezett){
+				Console.Write("Ön nincs bejelentkezve. Jelentkezzen be, vagy lépjen ki: ");
+				temp = Console.ReadLine();
+				temp = temp.Trim();
+				if (temp == "bejelentkezes"){
+					Console.Write("Adja meg a személyigazolványszámát: ");
+					string felhasznaloNev = Console.ReadLine();
+					Console.Write("Adja meg a jelszavát: ");
+					string jelszo = Console.ReadLine();
+					felhasznaloNev = felhasznaloNev.Trim();
+					jelszo = jelszo.Trim();
 					
+					while (bejelentkezett){
+						
+					}
+				}
+				else if (temp == "kilepes"){
+					kilepes = true;
+				}
+				else{
+					Console.WriteLine("Nem értelmezhető parancs!");
 				}
 			}
 		}
@@ -64,6 +75,35 @@ namespace RendorsegiAdatbazis
 				}
 			}
 			return false;
+		}
+		
+		public static bool OperatorLetezik(int azon){
+			foreach (felhasznalo user in felhasznalok) {
+				if (user is Operator){
+					if (((Operator)user).GetOperatorAzon() == azon){
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+		
+		public static bool AdminLetezik(int azon){
+			foreach (felhasznalo user in felhasznalok) {
+				if (user is Admin){
+					if (((Admin)user).GetAdminAzon() == azon){
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+		
+		public static void ParancsokKiirasa(){
+			Console.WriteLine("*************************************************");
+			Console.WriteLine("Használható parancsok:");
+			
+			Console.WriteLine("*************************************************");
 		}
 		
 		public static void FelhasznalokBetoltese(){
