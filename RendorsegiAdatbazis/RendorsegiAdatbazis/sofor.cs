@@ -30,32 +30,46 @@ namespace RendorsegiAdatbazis
 				Console.WriteLine("Nincs ilyen azonosítójú bírság.");
 			}
 		}
-		private void penzFeltoltes(int osszeg) => egyenleg += osszeg;
+		private void penzFeltoltes(int osszeg){
+			egyenleg += osszeg;
+		}
 		
 		public void sajatBirsagokMegtekintese() {
 			foreach (Birsag birsag in birsagok){
-				birsag.BirsagAdatainakKiirasa();
+				birsag.BirsagAdatainakKiirasa(false);
 			}
 		}
 		
 		public int BirsagKeresese(string birID){
 			for (int i = 0; i < birsagok.Count; i++){
-				if (birsagok[i].GetBirsagID == birID){
+				if (birsagok[i].GetBirsagID() == birID){
 					return i;
 				}
 			}
 			return -1;
 		}
 		
-		public void sajatAdatokMegtekintese(){
+		public override void sajatAdatokMegtekintese(){
 			base.sajatAdatokMegtekintese();
 			Console.WriteLine("Egyenleg: {0} Ft", egyenleg);
+		}
+		
+		public void BirsagRogzitese(Birsag ujBirsag){
+			birsagok.Add(ujBirsag);
+		}
+		
+		public void BirsagTorlese(int birsagIndex){
+			birsagok.RemoveAt(birsagIndex);
 		}
 	
 		//********************** GETTERS **************************
 		#region Getters
 		public int GetEgyenleg(){
 			return egyenleg;
+		}
+		
+		public List<Birsag> GetBirsagok(){
+			return birsagok;
 		}
 		
 		#endregion

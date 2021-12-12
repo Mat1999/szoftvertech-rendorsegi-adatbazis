@@ -4,10 +4,11 @@ namespace RendorsegiAdatbazis
 	public class Admin
 	{
 		private int adminAzon;
-		public Admin()
+		public Admin(string _nev, string _szemIgSz, DateTime _szuldate, string _lakhely, string _jelszo,int _adminAzon) : base(_nev, _szemIgSz, _szuldate, _lakhely, _jelszo)
 		{
+			adminAzon = _adminAzon;
 		}
-		private void felhasznaloTorles(string SzemIgSzam) { 
+		/*private void felhasznaloTorles(string SzemIgSzam) { 
 			//
 		}
 		private void felhasznaloFelvetele(string _nev, string _szemIgSz, DateTime _szuldate, string _lakhely, string _jelszo)
@@ -23,6 +24,21 @@ namespace RendorsegiAdatbazis
 		
 			Console.WriteLine("Kérem írjon be egy számot hogy milyen adatot szeretne módositani: ");
 			
+		}*/
+		
+		//********************** GETTERS **************************
+		#region Getters
+		public int GetAdminAzon(){
+			return adminAzon;
 		}
+		
+		#endregion
+		//********************** GETTERS **************************
+		#region Setters
+		public void SetAdminAzon(int ujAzon){
+			adminAzon = ujAzon;
+		}
+		
+		#endregion
 	}
 }

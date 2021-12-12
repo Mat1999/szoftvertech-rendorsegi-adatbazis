@@ -13,37 +13,60 @@ namespace RendorsegiAdatbazis
 {
 	class Program
 	{
-		bool bejelentkezett;
-		bool kilepes;
-		List<felhasznalo> felhasznalok;
+		static bool bejelentkezett;
+		static bool kilepes;
+		public static List<felhasznalo> felhasznalok;
+		static felhasznalo bejelentkezettUser;
 		
 		
 		public static void Main(string[] args)
 		{
-			
-			
+			FoprogramLoop();
 		}
 		
-		public void FoprogramLoop(){
+		public static void FoprogramLoop(){
 			bejelentkezett = false;
 			kilepes = false;
 			felhasznalok = new List<felhasznalo>();
+			bejelentkezettUser = null;
 			
 			while (!kilepes){
 				Console.Write("Adja meg a személyigazolványszámát: ");
 				string felhasznaloNev = Console.ReadLine();
 				Console.Write("Adja meg a jelszavát: ");
 				string jelszo = Console.ReadLine();
+				felhasznaloNev = felhasznaloNev.Trim();
+				jelszo = jelszo.Trim();
+				
 				while (bejelentkezett){
 					
 				}
 			}
 		}
 		
-		public bool KeresFelhasznalo(){
+		public static int KeresFelhasznalo(string szemelyAzon){
+			for (int i = 0; i < felhasznalok.Count; i++){
+				if (felhasznalok[i].GetIgazolvanySzam() == szemelyAzon){
+					return i;
+				}
+			}
+			return -1;
+		}
+		
+		public static bool BirsagLetezik(string id){
+			foreach (felhasznalo user in felhasznalok){
+				if (user is Sofor){
+					Sofor driver = (Sofor)user;
+					int talalat = driver.BirsagKeresese(id);
+					if (talalat != -1){
+						return true;
+					}
+				}
+			}
 			return false;
 		}
-		public void FelhasznalokBetoltese(){
+		
+		public static void FelhasznalokBetoltese(){
 			
 		}
 	}

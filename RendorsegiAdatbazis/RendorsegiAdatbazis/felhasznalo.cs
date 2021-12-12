@@ -35,6 +35,8 @@ namespace RendorsegiAdatbazis
 			Console.WriteLine("Lakhely: " + lakhely);
 		}
 		
+		
+		
 		//********************** GETTERS **************************
 		#region Getters
 		public string GetNev(){

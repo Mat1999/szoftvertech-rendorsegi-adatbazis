@@ -47,6 +47,13 @@ namespace RendorsegiAdatbazis
 			Console.WriteLine("Sofőr személyigazolványszáma: {0}, Kocsijának rendszáma: {1}", szemelyigazolvanyszam, rendszam);
 			Console.WriteLine("Mért sebesség: {0} km/h", mertSebesseg);
 			Console.WriteLine("Bírság összege: {0} Ft", birsagOsszege);
+			Console.Write("Kifizetés státusza: ");
+			if (kifizetett){
+				Console.WriteLine("Kifizetett");
+			}
+			else{
+				Console.WriteLine("Nem kifizetett");
+			}
 			if (operatorFelhaszn){
 				Console.WriteLine("Rögzítő operátor azonosítója: " + rogzitoAzonositoja);
 			}
@@ -74,6 +81,9 @@ namespace RendorsegiAdatbazis
 		}
 		public int GetBirsagOsszege(){
 			return birsagOsszege;
+		}
+		public bool GetKifizetett(){
+			return kifizetett;
 		}
 		#endregion
 		
