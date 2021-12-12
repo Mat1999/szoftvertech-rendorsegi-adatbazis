@@ -102,6 +102,11 @@ namespace RendorsegiAdatbazis
 			}
 		}
 		
+		public override void sajatAdatokMegtekintese(){
+			base.sajatAdatokMegtekintese();
+			Console.WriteLine("Operátorazonosító: " + operatorAzon);
+		}
+		
 		//********************** GETTERS **************************
 		#region Getters
 		public int GetOperatorAzon(){

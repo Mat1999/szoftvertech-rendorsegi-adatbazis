@@ -8,13 +8,20 @@ namespace RendorsegiAdatbazis
 		{
 			adminAzon = _adminAzon;
 		}
-		private void FelhasznaloTorlese(string SzemIgSzam) { 
+		public void FelhasznaloTorlese(string SzemIgSzam) { 
 			int index = Program.KeresFelhasznalo(SzemIgSzam);
 			if (index != -1){
 				Program.felhasznalok.RemoveAt(index);
 			}
 			else{
 				Console.WriteLine("Ilyen személyigazolványszámmal rendelekező felhasználó nem létezik! Törlés sikertelen.");
+			}
+		}
+		
+		public void OsszesFelhasznaloKilistazasa(){
+			foreach (felhasznalo user in Program.felhasznalok) {
+				Console.WriteLine("--------------------------------------");
+				user.sajatAdatokMegtekintese();
 			}
 		}
 		/*
@@ -66,6 +73,7 @@ namespace RendorsegiAdatbazis
 			switch (tipus){
 				case "sofor":
 					Program.felhasznalok.Add(new Sofor(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo));
+					Console.WriteLine("Új felhasználó létrehozása sikeres!");
 					break;
 				case "operator":
 					Console.Write("Adja meg az operátor azonosítóját (egész szám): ");
@@ -77,6 +85,7 @@ namespace RendorsegiAdatbazis
 					}
 					if (!Program.OperatorLetezik(ujOpAzon)){
 						Program.felhasznalok.Add(new Operator(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo, ujOpAzon));
+						Console.WriteLine("Új felhasználó létrehozása sikeres!");
 					}
 					else{
 						Console.WriteLine("Ilyen azonosítóval rendelkező operátor már létezik! Felhasználó létrehozása sikertelen.");
@@ -93,6 +102,7 @@ namespace RendorsegiAdatbazis
 					}
 					if (!Program.AdminLetezik(ujAdminAzon)){
 						Program.felhasznalok.Add(new Admin(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo, ujAdminAzon));
+						Console.WriteLine("Új felhasználó létrehozása sikeres!");
 					}
 					else{
 						Console.WriteLine("Ilyen azonosítóval rendelkező adminisztrátor már létezik! Felhasználó létrehozása sikertelen.");
@@ -100,6 +110,11 @@ namespace RendorsegiAdatbazis
 					}
 					break;
 			}
+		}
+		
+		public override void sajatAdatokMegtekintese(){
+			base.sajatAdatokMegtekintese();
+			Console.WriteLine("Admin azonosító: " + adminAzon);
 		}
 		
 		//********************** GETTERS **************************
