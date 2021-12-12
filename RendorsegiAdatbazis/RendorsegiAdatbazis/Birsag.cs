@@ -22,9 +22,11 @@ namespace RendorsegiAdatbazis
 		private string szemelyigazolvanyszam;
 		private string rogzitoAzonositoja;
 		private string rendszam;
+		private string birsagID;
 		private double mertSebesseg;
 		private int birsagOsszege;
-		public Birsag(string rogAzon, DateTime rogIdo, string igaSzam, string rendsz, double sebesseg, int birsag)
+		
+		public Birsag(string ID, string rogAzon, DateTime rogIdo, string igaSzam, string rendsz, double sebesseg, int birsag)
 		{
 			kifizetett = false;
 			rogzitoAzonositoja = rogAzon;
@@ -33,6 +35,7 @@ namespace RendorsegiAdatbazis
 			rendszam = rendsz;
 			mertSebesseg = sebesseg;
 			birsagOsszege = birsag;
+			birsagID = ID;
 		}
 		
 		public void BirsagKifizetese(){
@@ -62,6 +65,9 @@ namespace RendorsegiAdatbazis
 		}
 		public string GetRendszam(){
 			return rendszam;
+		}
+		public string GetBirsagID(){
+			return birsagID;
 		}
 		public double GetMertSebesseg(){
 			return mertSebesseg;
