@@ -176,7 +176,7 @@ namespace RendorsegiAdatbazis
 					Console.WriteLine("Nincs ilyen tulajdonsága a bírságnak!");
 					break;
 			}
-			
+			Program.BirsagokMentese();
 		}
 		
 		public void FelhasznaloAdatainakMegtekintese(string azon){

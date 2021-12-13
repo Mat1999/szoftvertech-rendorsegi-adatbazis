@@ -265,6 +265,29 @@ namespace RendorsegiAdatbazis
 						Console.WriteLine("Önnek nincs joga a parancs végrehajtására!");
 					}
 					break;
+				case "modositfelhasznalo":
+					if (bejelentkezettUser is Admin){
+						if (parancsEsParameter.Length == 2){
+							((Admin)bejelentkezettUser).FelhasznaloModositasa(parancsEsParameter[1]);
+						}
+						else{
+							Console.WriteLine("Nem megfelelő számú paraméter!");
+						}
+					}
+					else{
+						Console.WriteLine("Önnek nincs joga a parancs végrehajtására!");
+					}
+					break;
+				case "modositjelszo":
+					if (parancsEsParameter.Length == 2){
+						bejelentkezettUser.SetJelszo(parancsEsParameter[1]);
+						Program.FelhasznalokMentese();
+						Console.WriteLine("Jelszó sikeresen megváltoztatva.");
+					}
+					else{
+						Console.WriteLine("Nem megfelelő számú paraméter!");
+					}
+					break;
 				default:
 					Console.WriteLine("Nem értelmezhető parancs");
 					break;
@@ -330,6 +353,7 @@ namespace RendorsegiAdatbazis
 			Console.WriteLine("-----ÁLTALÁNOS------");
 			Console.WriteLine("Saját adatok kiírása			-	sajatadatok");
 			Console.WriteLine("Kijelentkezés				-	kijelentkezes");
+			Console.WriteLine("Jelszó módosítása			-	modositjelszo JELSZÓ");
 			Console.WriteLine("-------SOFŐR--------");
 			Console.WriteLine("Bírság kifizetése			-	kifizet BÍRSÁGAZONOSÍTÓ");
 			Console.WriteLine("Pénz befizetése a számlára	-	befizet PÉNZÖSSZEG");
@@ -347,6 +371,7 @@ namespace RendorsegiAdatbazis
 			Console.WriteLine("Felhasználó adatainak kiírása-	felhasznaloadatok AZONOSÍTÓ");
 			Console.WriteLine("Új felhasználó létrehozása	-	ujfelhasznalo TÍPUS");
 			Console.WriteLine("Felhasználó törlése			-	torolfelhasznalo AZONOSÍTÓ");
+			Console.WriteLine("Felhasználó adatainak módosítása-modositfelhasznalo AZONOSÍTÓ");
 			Console.WriteLine("*************************************************");
 			Console.WriteLine("");
 		}

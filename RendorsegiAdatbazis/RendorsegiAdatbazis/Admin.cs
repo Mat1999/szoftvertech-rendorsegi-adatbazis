@@ -20,6 +20,207 @@ namespace RendorsegiAdatbazis
 			}
 		}
 		
+		public void FelhasznaloModositasa(string userAzon){
+			int index = Program.KeresFelhasznalo(userAzon);
+			if (index != -1){
+				if (Program.felhasznalok[index] is Sofor){
+					Console.WriteLine("Módosítható tulajdonságok");
+					Console.WriteLine("(nev, szemelyazon, szuldatum, lakhely, jelszo, egyenleg)");
+					Console.Write("Milyen tulajdonságot szeretne módosítani: ");
+					string parancs = Console.ReadLine();
+					Console.Write("Adja meg az új értéket: ");
+					string value = Console.ReadLine();
+					switch (parancs){
+						case "nev":
+							Program.felhasznalok[index].SetNev(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "szemelyazon":
+							int letezikindex = Program.KeresFelhasznalo(value);
+							if (letezikindex == -1){
+								((Sofor)Program.felhasznalok[index]).SetIgazolvanySzam(value);
+								for (int i = 0; i < ((Sofor)Program.felhasznalok[index]).GetBirsagokSzama(); i++){
+									Birsag ujBirsag = ((Sofor)Program.felhasznalok[index]).GetBirsagAt(i);
+									ujBirsag.SetSzemelyigazolvanySzam(value);
+									((Sofor)Program.felhasznalok[index]).SetBirsagAt(i,ujBirsag);
+								}
+								Program.BirsagokMentese();
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Ilyen személyigazolványszámmal már létezik felhasználó.");
+							}
+							break;
+						case "szuldatum":
+							DateTime ujIdo;
+							if (DateTime.TryParse(value, out ujIdo)){
+								Program.felhasznalok[index].SetSzulDatum(ujIdo);
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Nem megfelelő formátumú érték!");
+							}
+							break;
+						case "lakhely":
+							Program.felhasznalok[index].SetLakhely(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "jelszo":
+							Program.felhasznalok[index].SetJelszo(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "egyenleg":
+							int ujEgyenleg;
+							if (int.TryParse(value, out ujEgyenleg)){
+								((Sofor)Program.felhasznalok[index]).SetEgyenleg(ujEgyenleg);
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Nem megfelelő formátumú érték!");
+							}
+							break;
+					}
+					
+				}
+				else if (Program.felhasznalok[index] is Operator){
+					Console.WriteLine("Módosítható tulajdonságok");
+					Console.WriteLine("(nev, szemelyazon, szuldatum, lakhely, jelszo, opazon)");
+					Console.Write("Milyen tulajdonságot szeretne módosítani: ");
+					string parancs = Console.ReadLine();
+					Console.Write("Adja meg az új értéket: ");
+					string value = Console.ReadLine();
+					switch (parancs){
+						case "nev":
+							Program.felhasznalok[index].SetNev(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "szemelyazon":
+							int letezikindex = Program.KeresFelhasznalo(value);
+							if (letezikindex == -1){
+								Program.felhasznalok[index].SetIgazolvanySzam(value);
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Ilyen személyigazolványszámmal már létezik felhasználó.");
+							}
+							break;
+						case "szuldatum":
+							DateTime ujIdo;
+							if (DateTime.TryParse(value, out ujIdo)){
+								Program.felhasznalok[index].SetSzulDatum(ujIdo);
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Nem megfelelő formátumú érték!");
+							}
+							break;
+						case "lakhely":
+							Program.felhasznalok[index].SetLakhely(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "jelszo":
+							Program.felhasznalok[index].SetJelszo(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "opazon":
+							int ujAzon;
+							if (int.TryParse(value, out ujAzon)){
+								bool letezik = false;
+								foreach (felhasznalo user in Program.felhasznalok) {
+									if (user is Operator){
+										if (((int)(((Operator)Program.felhasznalok[index]).GetOperatorAzon())) == ujAzon){
+											letezik = true;
+										}
+									}
+								}
+								if (!letezik){
+									((Operator)Program.felhasznalok[index]).SetOperatorAzon(ujAzon);
+									Console.WriteLine("A művelet sikeres volt.");
+								}
+								else{
+									Console.WriteLine("Ilyen azonosítójú operátor már létezik!");
+								}
+								
+							}
+							else{
+								Console.WriteLine("Nem megfelelő formátumú érték!");
+							}
+							break;
+					}
+				}
+				else if (Program.felhasznalok[index] is Admin){
+					Console.WriteLine("Módosítható tulajdonságok");
+					Console.WriteLine("(nev, szemelyazon, szuldatum, lakhely, jelszo, adminazon)");
+					Console.Write("Milyen tulajdonságot szeretne módosítani: ");
+					string parancs = Console.ReadLine();
+					Console.Write("Adja meg az új értéket: ");
+					string value = Console.ReadLine();
+					switch (parancs){
+						case "nev":
+							Program.felhasznalok[index].SetNev(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "szemelyazon":
+							int letezikindex = Program.KeresFelhasznalo(value);
+							if (letezikindex == -1){
+								Program.felhasznalok[index].SetIgazolvanySzam(value);
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Ilyen személyigazolványszámmal már létezik felhasználó.");
+							}
+							break;
+						case "szuldatum":
+							DateTime ujIdo;
+							if (DateTime.TryParse(value, out ujIdo)){
+								Program.felhasznalok[index].SetSzulDatum(ujIdo);
+								Console.WriteLine("A művelet sikeres volt.");
+							}
+							else{
+								Console.WriteLine("Nem megfelelő formátumú érték!");
+							}
+							break;
+						case "lakhely":
+							Program.felhasznalok[index].SetLakhely(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "jelszo":
+							Program.felhasznalok[index].SetJelszo(value);
+							Console.WriteLine("A művelet sikeres volt.");
+							break;
+						case "adminazon":
+							int ujAzon;
+							if (int.TryParse(value, out ujAzon)){
+								bool letezik = false;
+								foreach (felhasznalo user in Program.felhasznalok) {
+									if (user is Admin){
+										if (((int)(((Admin)Program.felhasznalok[index]).GetAdminAzon())) == ujAzon){
+											letezik = true;
+										}
+									}
+								}
+								if (!letezik){
+									((Admin)Program.felhasznalok[index]).SetAdminAzon(ujAzon);
+									Console.WriteLine("A művelet sikeres volt.");
+								}
+								else{
+									Console.WriteLine("Ilyen azonosítójú adminisztrátor már létezik!");
+								}
+								
+							}
+							else{
+								Console.WriteLine("Nem megfelelő formátumú érték!");
+							}
+							break;
+					}
+				}
+				Program.FelhasznalokMentese();
+			}
+			else{
+				Console.WriteLine("Ilyen személyigazolványszámmal rendelkező felhasználó nem létezik.");
+			}
+		}
+		
 		public void OsszesFelhasznaloKilistazasa(){
 			foreach (felhasznalo user in Program.felhasznalok) {
 				Console.WriteLine("--------------------------------------");
