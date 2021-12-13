@@ -460,6 +460,9 @@ namespace RendorsegiAdatbazis
 						if (index != -1){
 							((Sofor)felhasznalok[index]).BirsagRogzitese(new Birsag(birsagErtekek[1],int.Parse(birsagErtekek[5]),DateTime.Parse(birsagErtekek[4]),birsagErtekek[0],birsagErtekek[2],double.Parse(birsagErtekek[3]),int.Parse(birsagErtekek[6]),bool.Parse(birsagErtekek[7])));
 						}
+						else{
+							birsagHiba++;
+						}
 					}
 					catch{
 						birsagHiba++;
