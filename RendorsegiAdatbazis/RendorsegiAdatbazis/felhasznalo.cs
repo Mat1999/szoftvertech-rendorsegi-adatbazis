@@ -70,7 +70,7 @@ namespace RendorsegiAdatbazis
 		public void SetLakhely(string _lakhely){
 			lakhely = _lakhely;
 		}
-		public void GetJelszo(string _jelszo){
+		public void SetJelszo(string _jelszo){
 			jelszo = _jelszo;
 		}
 		

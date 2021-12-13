@@ -12,6 +12,8 @@ namespace RendorsegiAdatbazis
 			int index = Program.KeresFelhasznalo(SzemIgSzam);
 			if (index != -1){
 				Program.felhasznalok.RemoveAt(index);
+				Program.FelhasznalokMentese();
+				Console.WriteLine("Felhasználó törlése sikeres.");
 			}
 			else{
 				Console.WriteLine("Ilyen személyigazolványszámmal rendelekező felhasználó nem létezik! Törlés sikertelen.");
@@ -22,6 +24,16 @@ namespace RendorsegiAdatbazis
 			foreach (felhasznalo user in Program.felhasznalok) {
 				Console.WriteLine("--------------------------------------");
 				user.sajatAdatokMegtekintese();
+			}
+		}
+		
+		public void FelhasznaloAdatainakMegtekintese(string azon){
+			int index = Program.KeresFelhasznalo(azon);
+			if (index != -1){
+				Program.felhasznalok[index].sajatAdatokMegtekintese();
+			}
+			else{
+				Console.WriteLine("Ilyen személyigazolványszámmal rendelkező felhasználó nem létezik.");
 			}
 		}
 		/*
@@ -72,7 +84,8 @@ namespace RendorsegiAdatbazis
 			string temp;
 			switch (tipus){
 				case "sofor":
-					Program.felhasznalok.Add(new Sofor(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo));
+					Program.felhasznalok.Add(new Sofor(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo,0));
+					Program.FelhasznalokMentese();
 					Console.WriteLine("Új felhasználó létrehozása sikeres!");
 					break;
 				case "operator":
@@ -85,6 +98,7 @@ namespace RendorsegiAdatbazis
 					}
 					if (!Program.OperatorLetezik(ujOpAzon)){
 						Program.felhasznalok.Add(new Operator(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo, ujOpAzon));
+						Program.FelhasznalokMentese();
 						Console.WriteLine("Új felhasználó létrehozása sikeres!");
 					}
 					else{
@@ -102,6 +116,7 @@ namespace RendorsegiAdatbazis
 					}
 					if (!Program.AdminLetezik(ujAdminAzon)){
 						Program.felhasznalok.Add(new Admin(ujNev, igaSzam, ujSzulDat, ujLak, ujJelszo, ujAdminAzon));
+						Program.FelhasznalokMentese();
 						Console.WriteLine("Új felhasználó létrehozása sikeres!");
 					}
 					else{
@@ -115,6 +130,11 @@ namespace RendorsegiAdatbazis
 		public override void sajatAdatokMegtekintese(){
 			base.sajatAdatokMegtekintese();
 			Console.WriteLine("Admin azonosító: " + adminAzon);
+		}
+		
+		public override void PublikusAdatokKilistazasa(){
+			base.PublikusAdatokKilistazasa();
+			Console.WriteLine("A felhasználó admin.");
 		}
 		
 		//********************** GETTERS **************************

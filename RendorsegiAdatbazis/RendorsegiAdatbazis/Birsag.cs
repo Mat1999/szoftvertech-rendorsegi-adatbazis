@@ -26,9 +26,9 @@ namespace RendorsegiAdatbazis
 		private double mertSebesseg;
 		private int birsagOsszege;
 		
-		public Birsag(string ID, int rogAzon, DateTime rogIdo, string igaSzam, string rendsz, double sebesseg, int birsag)
+		public Birsag(string ID, int rogAzon, DateTime rogIdo, string igaSzam, string rendsz, double sebesseg, int birsag, bool fizetett = false)
 		{
-			kifizetett = false;
+			kifizetett = fizetett;
 			rogzitoAzonositoja = rogAzon;
 			rogzitesIdopontja = rogIdo;
 			szemelyigazolvanyszam = igaSzam;
@@ -43,6 +43,7 @@ namespace RendorsegiAdatbazis
 		}
 		
 		public void BirsagAdatainakKiirasa(bool operatorFelhaszn){
+			Console.WriteLine("Bírság azonosítója: " + birsagID);
 			Console.WriteLine("Bírság rögzítésének időpontja: " + rogzitesIdopontja.ToString());
 			Console.WriteLine("Sofőr személyigazolványszáma: {0}, Kocsijának rendszáma: {1}", szemelyigazolvanyszam, rendszam);
 			Console.WriteLine("Mért sebesség: {0} km/h", mertSebesseg);
@@ -106,6 +107,9 @@ namespace RendorsegiAdatbazis
 		}
 		public void SetBirsagOsszege(int osszeg){
 			birsagOsszege = osszeg;
+		}
+		public void SetKifizetett(bool ujKifizetett){
+			kifizetett = ujKifizetett;
 		}
 		#endregion
 		

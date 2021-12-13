@@ -8,19 +8,22 @@ namespace RendorsegiAdatbazis
 		private int egyenleg;
 		List<Birsag> birsagok;
 		
-		public Sofor(string _nev, string _szemIgSz, DateTime _szuldate, string _lakhely, string _jelszo) : base(_nev, _szemIgSz, _szuldate, _lakhely, _jelszo)
+		public Sofor(string _nev, string _szemIgSz, DateTime _szuldate, string _lakhely, string _jelszo, int penz) : base(_nev, _szemIgSz, _szuldate, _lakhely, _jelszo)
 		{
-			egyenleg = 0;
+			egyenleg = penz;
 			birsagok = new List<Birsag>();
 		}
 		
 
-		private void BirsagKifizetese(string birsagID) {
+		public void BirsagKifizetese(string birsagID) {
 			int index = BirsagKeresese(birsagID);
 			if (index >= 0){
 				if (birsagok[index].GetBirsagOsszege() <= egyenleg){
 					egyenleg -= birsagok[index].GetBirsagOsszege();
 					birsagok[index].BirsagKifizetese();
+					Console.WriteLine("A bírság kifizetése sikeres.");
+					Program.BirsagokMentese();
+					Program.FelhasznalokMentese();
 				}
 				else{
 					Console.WriteLine("Az egyenlegen nincsen elég pénz. Töltse fel az egyenlegét!");
@@ -30,8 +33,10 @@ namespace RendorsegiAdatbazis
 				Console.WriteLine("Nincs ilyen azonosítójú bírság.");
 			}
 		}
-		private void penzFeltoltes(int osszeg){
+		public void penzFeltoltes(int osszeg){
 			egyenleg += osszeg;
+			Console.WriteLine("Pénzfeltöltés sikeres, új egyenleg: {0} Ft",egyenleg);
+			Program.FelhasznalokMentese();
 		}
 		
 		public void sajatBirsagokMegtekintese() {
@@ -54,6 +59,8 @@ namespace RendorsegiAdatbazis
 			Console.WriteLine("Egyenleg: {0} Ft", egyenleg);
 		}
 		
+		
+		
 		public void BirsagRogzitese(Birsag ujBirsag){
 			birsagok.Add(ujBirsag);
 		}
@@ -68,15 +75,27 @@ namespace RendorsegiAdatbazis
 			return egyenleg;
 		}
 		
+		public int GetBirsagokSzama(){
+			return birsagok.Count;
+		}
+		
+		public Birsag GetBirsagAt(int index){
+			return birsagok[index];
+		}
+		
 		public List<Birsag> GetBirsagok(){
 			return birsagok;
 		}
 		
 		#endregion
-		//********************** GETTERS **************************
+		//********************** SETTERS **************************
 		#region Setters
 		public void SetEgyenleg(int _egyenleg){
 			egyenleg = _egyenleg;
+		}
+		
+		public void SetBirsagAt(int index, Birsag ujBirsag){
+			birsagok[index] = ujBirsag;
 		}
 		
 		#endregion
