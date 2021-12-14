@@ -1,2 +1,3 @@
-﻿erator;595959;Kovács Géza;1975.05.03. 0:00:00;8750 Bugyi Pizsi utca 6;operator;1
-sofor;494949;Tör E
+admin;0057SA;Varga Mátyás;1999.12.02. 0:00:00;8074, Csókakő, Kossuth Lajos utca 59.;admin12345;1
+operator;000123;Kovács Elemér;1986.05.13. 0:00:00;7500 Csór Vak Bottyán utca 5;operator;2
+sofor;007007;James Bond;1963.07.03. 0:00:00;7155 London Baker Street 221/B;sofor;0

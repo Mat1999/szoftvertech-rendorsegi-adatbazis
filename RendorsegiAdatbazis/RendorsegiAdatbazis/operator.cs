@@ -68,10 +68,12 @@ namespace RendorsegiAdatbazis
         {
 			foreach (felhasznalo user in Program.felhasznalok) {
 				if (user is Sofor){
+					Console.WriteLine("************************************");
 					Console.WriteLine("Sofőr adatai");
 					((Sofor)user).PublikusAdatokKilistazasa();
 					List<Birsag> userBirsagai = ((Sofor)user).GetBirsagok();
 					foreach(Birsag buntetes in userBirsagai){
+						Console.WriteLine("-----------------------");
 						buntetes.BirsagAdatainakKiirasa(true);
 					}
 				}
@@ -206,6 +208,7 @@ namespace RendorsegiAdatbazis
 		}
 		public void felhasznalokListazasa() {
 			foreach (felhasznalo user in Program.felhasznalok) {
+				Console.WriteLine("--------------------------------------");
 				user.PublikusAdatokKilistazasa();
 			}
 		}
@@ -214,6 +217,7 @@ namespace RendorsegiAdatbazis
 			if (index != -1){
 				List<Birsag> userBirsagai = ((Sofor)Program.felhasznalok[index]).GetBirsagok();
 				foreach (Birsag buntetes in userBirsagai) {
+					Console.WriteLine("-----------------------");
 					buntetes.BirsagAdatainakKiirasa(true);
 				}
 			}
